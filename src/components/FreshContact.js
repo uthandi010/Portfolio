@@ -5,24 +5,24 @@ import "../fresh-styles.css";
 const FreshContact = () => {
   return (
     <section id="contact" className="contact-section">
-      <div className="section-header">
+      <div className="section-header reveal">
         <div className="section-badge">
           <Mail size={16} />
           Get in Touch
         </div>
         <h2 className="section-title">Let's work together</h2>
         <p className="section-description">
-          I'm available for freelance work and full-time positions. 
+          I'm available for freelance work and full-time positions.
           Have a project in mind or just want to chat? Feel free to reach out!
         </p>
       </div>
 
-      <div className="contact-links">
-        <a href="mailto:uthandi@example.com" className="contact-link">
+      <div className="contact-links reveal">
+        <a href="mailto:uthandi40@gmail.com" className="contact-link">
           <Mail size={20} />
-          uthandi@example.com
+          uthandi40@gmail.com
         </a>
-        <a href="https://linkedin.com/in/uthandi" target="_blank" rel="noopener noreferrer" className="contact-link">
+        <a href="https://www.linkedin.com/in/uthandi-p-a70377340/" target="_blank" rel="noopener noreferrer" className="contact-link">
           <Linkedin size={20} />
           LinkedIn
         </a>

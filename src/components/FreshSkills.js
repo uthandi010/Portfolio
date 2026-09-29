@@ -38,7 +38,7 @@ const skills = [
 const FreshSkills = () => {
   return (
     <section id="skills" className="section">
-      <div className="section-header">
+      <div className="section-header reveal">
         <div className="section-badge">
           <Code2 size={16} />
           Skills & Technologies
@@ -51,7 +51,11 @@ const FreshSkills = () => {
 
       <div className="skills-grid">
         {skills.map((skill, index) => (
-          <div key={index} className="skill-card">
+          <div
+            key={index}
+            className="skill-card reveal"
+            style={{ transitionDelay: `${index * 60}ms` }}
+          >
             <div className="skill-card-header">
               <div className="skill-card-icon">
                 {skill.icon}

@@ -58,7 +58,7 @@ const projects = [
 const FreshProjects = () => {
   return (
     <section id="projects" className="section">
-      <div className="section-header">
+      <div className="section-header reveal">
         <div className="section-badge">
           <FolderGit2 size={16} />
           Featured Projects
@@ -70,8 +70,12 @@ const FreshProjects = () => {
       </div>
 
       <div className="projects-grid">
-        {projects.map((project) => (
-          <div key={project.id} className="project-card">
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            className="project-card reveal"
+            style={{ transitionDelay: `${index * 80}ms` }}
+          >
             <div className="project-image-container">
               <img src={project.image} alt={project.title} className="project-image" />
               <span className="project-type-badge">{project.type}</span>
