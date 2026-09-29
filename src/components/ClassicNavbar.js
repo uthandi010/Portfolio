@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Github, Linkedin, Instagram, Mail, Sun, Moon } from "lucide-react";
+import { useTheme } from "../theme-context";
 import "../fresh-styles.css";
 
 const navItems = [
@@ -11,8 +12,10 @@ const navItems = [
 ];
 
 const ClassicNavbar = () => {
+  const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,30 @@ const ClassicNavbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Highlight whichever section is currently in view.
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.querySelector(item.href))
+      .filter(Boolean);
+    if (!sections.length || typeof IntersectionObserver === "undefined") {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -38,7 +65,7 @@ const ClassicNavbar = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="classic-nav-link"
+                className={`classic-nav-link ${activeSection === item.href ? "active" : ""}`}
                 onClick={closeMobileMenu}
               >
                 {item.label}
@@ -51,23 +78,18 @@ const ClassicNavbar = () => {
               <a href="https://github.com/uthandi010" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="GitHub">
                 <Github size={18} />
               </a>
-              <a href="https://linkedin.com/in/uthandi" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/uthandi-p-a70377340/" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="https://instagram.com/uthandi_jr " target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="Instagram">
+              <a href="https://instagram.com/uthandi_jr" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
             </div>
             <button
               type="button"
               className="classic-theme-toggle"
-              onClick={() => {
-                const html = document.documentElement;
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                html.setAttribute('data-theme', newTheme);
-              }}
-              aria-label="Toggle theme"
+              onClick={toggleTheme}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
               <Sun size={18} className="theme-icon sun-icon" />
               <Moon size={18} className="theme-icon moon-icon" />
@@ -119,13 +141,13 @@ const ClassicNavbar = () => {
           <div className="classic-mobile-footer">
             <p>Get in touch</p>
             <div className="classic-mobile-socials">
-              <a href="mailto:uthandi@example.com" className="classic-mobile-social-btn">
+              <a href="mailto:uthandi40@gmail.com" className="classic-mobile-social-btn">
                 <Mail size={20} />
               </a>
               <a href="https://github.com/uthandi010" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">
                 <Github size={20} />
               </a>
-              <a href="https://linkedin.com/in/uthandi" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">
+              <a href="https://www.linkedin.com/in/uthandi-p-a70377340/" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">
                 <Linkedin size={20} />
               </a>
               <a href="https://instagram.com/uthandi_jr" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">

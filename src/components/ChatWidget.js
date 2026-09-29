@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Bot, MessageSquareText, SendHorizonal, X } from "lucide-react";
-import "../new-styles.css";
+import "../fresh-styles.css";
 
 const promptSuggestions = [
   "What does Uthandi build?",
@@ -59,11 +59,11 @@ const getAgentReply = (question) => {
     normalized.includes("linkedin") ||
     normalized.includes("whatsapp")
   ) {
-    return "You can reach him by email at uthandi40@gmail.com, or through LinkedIn, WhatsApp, and Instagram in the contact section.";
+    return "You can reach him by email at uthandi40@gmail.com, or through LinkedIn, GitHub, and Instagram in the contact section.";
   }
 
   if (normalized.includes("resume") || normalized.includes("cv")) {
-    return "Use the Resume button in the navigation bar to open the latest resume.";
+    return "There's no downloadable resume posted here yet — email uthandi40@gmail.com and he'll send one over.";
   }
 
   return "I can help with skills, projects, experience, resume, or contact details. Try asking what he builds or how to contact him.";

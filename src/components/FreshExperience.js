@@ -45,7 +45,7 @@ const FreshExperience = () => {
 
   return (
     <section id="experience" className="section">
-      <div className="section-header">
+      <div className="section-header reveal">
         <div className="section-badge">
           <BriefcaseBusiness size={16} />
           Experience
@@ -56,7 +56,7 @@ const FreshExperience = () => {
         </p>
       </div>
 
-      <div className="experience-card">
+      <div className="experience-card reveal">
         <div className="experience-header">
           <div>
             <h3 className="experience-title">Full-Stack Developer</h3>
