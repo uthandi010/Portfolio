@@ -33,7 +33,7 @@ const getAgentReply = (question) => {
     normalized.includes("skills") ||
     normalized.includes("use")
   ) {
-    return "His main stack includes React, Vue 3, Angular, Python, Ruby on Rails, .NET, .NET MAUI, SQL, Git, GitHub, Netlify, and Chrome DevTools.";
+    return "His main stack includes React, Vue 3, Python (FastAPI), Ruby on Rails, Node.js, C# (.NET/.NET MAUI), SQL, MongoDB, Git, and GitHub Actions for CI.";
   }
 
   if (
@@ -49,7 +49,7 @@ const getAgentReply = (question) => {
     normalized.includes("portfolio") ||
     normalized.includes("apps")
   ) {
-    return "Featured work includes a Calculator App, Network Sniffer App, Temporary Mail platform, Blog Post App, and client work on Teldat BeSafeAgent.";
+    return "Featured work includes six full-stack SaaS-style apps: BoardRoom (project management), BookedIn (appointment booking), LinkFolio (link-in-bio with analytics), HelpDeskly (a support helpdesk), ShelfSpace (inventory with a native desktop client), and PayDesk (subscription billing).";
   }
 
   if (
