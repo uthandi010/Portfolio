@@ -1,57 +1,82 @@
 import React from "react";
-import { ExternalLink, Github, FolderGit2 } from "lucide-react";
-import project1Image from "../assets/clientproject1.png";
-import project2Image from "../assets/clientproject4.png";
-import project3Image from "../assets/clientproject3.png";
-import project4Image from "../assets/clientproject5.png";
-import project5Image from "../assets/clientproject2.png";
+import {
+  Github,
+  FolderGit2,
+  KanbanSquare,
+  CalendarCheck,
+  Link2,
+  Headset,
+  Boxes,
+  Receipt,
+} from "lucide-react";
 import "../fresh-styles.css";
 
 const projects = [
   {
     id: 1,
-    title: "Calculator App",
-    image: project3Image,
+    title: "BoardRoom",
+    icon: KanbanSquare,
+    gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
     type: "Own Project",
-    description: "A C# and .NET MAUI calculator experience built for both everyday calculations and more advanced math workflows.",
-    techStack: ["C#", ".NET MAUI"],
-    sourceCode: "https://github.com/uthandi010/CalculatorApp",
+    description:
+      "A multi-tenant project management tool for teams - workspaces, boards, and tasks, with Owner/Admin/Member roles enforced server-side on every request, not just hidden in the UI.",
+    techStack: ["C#", "ASP.NET Core", "EF Core", "React", "TypeScript"],
+    sourceCode: "https://github.com/uthandi010/BoardRoom",
   },
   {
     id: 2,
-    title: "Network Sniffer App",
-    image: project2Image,
+    title: "BookedIn",
+    icon: CalendarCheck,
+    gradient: "linear-gradient(135deg, #8b5cf6, #6366f1)",
     type: "Own Project",
-    description: "A traffic-analysis tool focused on packet capture and NetFlow inspection with a practical desktop-style interface.",
-    techStack: ["C#", ".NET MAUI", "SharpPcap", "OpenSSL"],
-    sourceCode: "https://github.com/uthandi010/NetworkSnifferApp",
+    description:
+      "An appointment-booking SaaS for small businesses - a real availability engine computes actual free time slots from opening hours and existing bookings, plus a public no-login booking page.",
+    techStack: ["Ruby on Rails", "Vue 3", "SQLite"],
+    sourceCode: "https://github.com/uthandi010/BookedIn",
   },
   {
     id: 3,
-    title: "Temporary Mail Website",
-    image: project4Image,
+    title: "LinkFolio",
+    icon: Link2,
+    gradient: "linear-gradient(135deg, #ec4899, #8b5cf6)",
     type: "Own Project",
-    description: "A lightweight utility website for generating temporary email addresses with a fast browser-first experience.",
-    techStack: ["HTML", "CSS", "JavaScript", "TypeScript"],
-    sourceCode: "https://github.com/uthandi010/Temporary_Mail_Creation",
-    liveSite: "https://dummymailcreation.netlify.app/",
+    description:
+      "A link-in-bio builder with click tracking baked in - every click is recorded and rolled up into a real analytics dashboard, daily trends and per-link breakdowns included.",
+    techStack: ["Python", "FastAPI", "SQLAlchemy", "React"],
+    sourceCode: "https://github.com/uthandi010/LinkFolio",
   },
   {
     id: 4,
-    title: "Blog Post App",
-    image: project5Image,
+    title: "HelpDeskly",
+    icon: Headset,
+    gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)",
     type: "Own Project",
-    description: "A content platform built with Ruby, Vue, and Docker to support publishing workflows and cleaner content management.",
-    techStack: ["Ruby", "Vue", "Docker"],
-    sourceCode: "https://github.com/uthandi010/blog_app",
+    description:
+      "A customer support helpdesk - full ticket lifecycle management, email-gated self-service for customers with no account, and an agent-facing analytics dashboard.",
+    techStack: ["Node.js", "Express", "MongoDB", "React"],
+    sourceCode: "https://github.com/uthandi010/HelpDeskly",
   },
   {
     id: 5,
-    title: "Teldat BeSafeAgent",
-    image: project1Image,
-    type: "Client Project",
-    description: "A secure network-protection application built with .NET MAUI, SSL, and SQL to improve privacy and traffic safety.",
-    techStack: ["C#", ".NET MAUI", "SSL", "SQL"],
+    title: "ShelfSpace",
+    icon: Boxes,
+    gradient: "linear-gradient(135deg, #f59e0b, #ef4444)",
+    type: "Own Project",
+    description:
+      "Inventory and order management for a small seller, paired with a native .NET MAUI desktop client instead of another browser app - all-or-nothing stock checks and price snapshotting on every order.",
+    techStack: ["C#", "ASP.NET Core", ".NET MAUI", "EF Core"],
+    sourceCode: "https://github.com/uthandi010/ShelfSpace",
+  },
+  {
+    id: 6,
+    title: "PayDesk",
+    icon: Receipt,
+    gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
+    type: "Own Project",
+    description:
+      "A subscription billing and invoicing SaaS with a pluggable payment-gateway interface, generated PDF invoices, and a revenue dashboard with MRR normalized across monthly and yearly plans.",
+    techStack: ["Ruby on Rails", "React", "Recharts"],
+    sourceCode: "https://github.com/uthandi010/PayDesk",
   },
 ];
 
@@ -65,61 +90,53 @@ const FreshProjects = () => {
         </div>
         <h2 className="section-title">My recent work</h2>
         <p className="section-description">
-          A selection of projects that demonstrate my skills and experience
+          A set of full-stack SaaS-style apps, each built around one real product problem rather than plain CRUD
         </p>
       </div>
 
       <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            className="project-card reveal"
-            style={{ transitionDelay: `${index * 80}ms` }}
-          >
-            <div className="project-image-container">
-              <img src={project.image} alt={project.title} className="project-image" />
-              <span className="project-type-badge">{project.type}</span>
-            </div>
-
-            <div className="project-content">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-
-              <div className="project-tech">
-                {project.techStack.map((tech) => (
-                  <span key={tech} className="tech-badge">
-                    {tech}
-                  </span>
-                ))}
+        {projects.map((project, index) => {
+          const Icon = project.icon;
+          return (
+            <div
+              key={project.id}
+              className="project-card reveal"
+              style={{ transitionDelay: `${index * 80}ms` }}
+            >
+              <div className="project-image-container project-visual" style={{ background: project.gradient }}>
+                <Icon size={56} color="#ffffff" strokeWidth={1.5} />
+                <span className="project-type-badge">{project.type}</span>
               </div>
 
-              <div className="project-links">
-                {project.sourceCode && (
-                  <a
-                    href={project.sourceCode}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    <Github size={18} />
-                    Source Code
-                  </a>
-                )}
-                {project.liveSite && (
-                  <a
-                    href={project.liveSite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    <ExternalLink size={18} />
-                    Live Demo
-                  </a>
-                )}
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+
+                <div className="project-tech">
+                  {project.techStack.map((tech) => (
+                    <span key={tech} className="tech-badge">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="project-links">
+                  {project.sourceCode && (
+                    <a
+                      href={project.sourceCode}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      <Github size={18} />
+                      Source Code
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

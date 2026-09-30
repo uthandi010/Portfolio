@@ -1976,6 +1976,17 @@ img {
   transform: scale(1.1);
 }
 
+.project-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-visual {
+  transform: scale(1.06);
+}
+
 .project-type-badge {
   position: absolute;
   top: 16px;
