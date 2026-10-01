@@ -54,18 +54,13 @@ const FreshHero = () => {
 
           <div className="hero-stats">
             <div className="stat">
-              <div className="stat-value">3+</div>
+              <div className="stat-value">1+</div>
               <div className="stat-label">Years Exp.</div>
             </div>
             <div className="stat-divider"></div>
             <div className="stat">
-              <div className="stat-value">12+</div>
-              <div className="stat-label">Projects</div>
-            </div>
-            <div className="stat-divider"></div>
-            <div className="stat">
-              <div className="stat-value">5+</div>
-              <div className="stat-label">Happy Clients</div>
+              <div className="stat-value">6</div>
+              <div className="stat-label">SaaS Projects</div>
             </div>
           </div>
         </div>
