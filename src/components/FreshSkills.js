@@ -1,37 +1,37 @@
 import React from "react";
-import { Code2, Database, Layout, Server, Smartphone, Wrench } from "lucide-react";
+import { Code2, Database, Layout, Server, TestTube2, Wrench } from "lucide-react";
 import "../fresh-styles.css";
 
 const skills = [
   {
     category: "Frontend",
     icon: <Layout size={24} />,
-    items: ["React", "Vue.js", "TypeScript", "Tailwind CSS", "Next.js"]
+    items: ["React", "Vue 3", "TypeScript", "Angular"]
   },
   {
     category: "Backend",
     icon: <Server size={24} />,
-    items: ["Node.js", "Python", "Ruby on Rails", ".NET", "GraphQL"]
+    items: ["Python (FastAPI)", "Ruby on Rails", "Node.js (Express)", "C# / .NET", ".NET MAUI"]
   },
   {
     category: "Database",
     icon: <Database size={24} />,
-    items: ["PostgreSQL", "MongoDB", "Redis", "MySQL"]
+    items: ["SQLite", "MongoDB", "MySQL"]
   },
   {
-    category: "Mobile",
-    icon: <Smartphone size={24} />,
-    items: ["React Native", ".NET MAUI", "Flutter"]
-  },
-  {
-    category: "DevOps",
-    icon: <Wrench size={24} />,
-    items: ["Git", "Docker", "AWS", "CI/CD"]
+    category: "Testing & CI/CD",
+    icon: <TestTube2 size={24} />,
+    items: ["RSpec", "pytest", "Vitest", "xUnit", "GitHub Actions"]
   },
   {
     category: "Core",
     icon: <Code2 size={24} />,
-    items: ["REST APIs", "Microservices", "System Design", "Testing"]
+    items: ["REST APIs", "JWT Authentication", "Server-Side Authorization"]
+  },
+  {
+    category: "Tools",
+    icon: <Wrench size={24} />,
+    items: ["Git", "GitHub", "Visual Studio", "VS Code"]
   }
 ];
 
