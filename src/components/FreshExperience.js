@@ -1,84 +1,50 @@
 import React from "react";
-import { BriefcaseBusiness, CheckCircle2 } from "lucide-react";
+import { BriefcaseBusiness, Calendar } from "lucide-react";
 import "../fresh-styles.css";
 
-const getExperienceDuration = (startYear, startMonth) => {
-  const today = new Date();
-  const startDate = new Date(startYear, startMonth - 1, 1);
-
-  let totalMonths =
-    (today.getFullYear() - startDate.getFullYear()) * 12 +
-    (today.getMonth() - startDate.getMonth());
-
-  if (today.getDate() < startDate.getDate()) {
-    totalMonths -= 1;
+const experiences = [
+  {
+    title: "Full-Stack Developer",
+    company: "Francium Tech",
+    date: "Feb 2025 - Present",
+    description: "Architecting and maintaining high-performance web applications. Leading the development of full-stack features using Python, Ruby on Rails, Vue 3, React, and .NET. Focusing heavily on clean architecture and delivering massive value through seamless user experiences.",
+    tech: ["Python", "Vue 3", "React", ".NET", "Ruby on Rails"]
   }
-
-  if (totalMonths < 0) {
-    totalMonths = 0;
-  }
-
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-
-  // Return only years and months as requested
-  if (years > 0 && months > 0) {
-    return `${years}y ${months}m`;
-  }
-
-  if (years > 0) {
-    return `${years}y`;
-  }
-
-  return `${months}m`;
-};
-
-const strengths = [
-  "Builds robust applications across frontend and backend systems",
-  "Balances product usability, performance, and clean engineering",
-  "Works effectively with cross-functional teams and delivery timelines",
-  "Continuously improves code quality, maintainability, and workflow"
 ];
 
 const FreshExperience = () => {
-  const experienceDuration = getExperienceDuration(2025, 2);
-
   return (
     <section id="experience" className="section">
       <div className="section-header reveal">
-        <div className="section-badge">
+        <div className="premium-badge">
           <BriefcaseBusiness size={16} />
-          Experience
+          <span>My Journey</span>
         </div>
-        <h2 className="section-title">Where I work</h2>
-        <p className="section-description">
-          Turning requirements into production-ready experiences users love
-        </p>
+        <h2 className="section-title">Professional Experience</h2>
       </div>
 
-      <div className="experience-card reveal">
-        <div className="experience-header">
-          <div>
-            <h3 className="experience-title">Full-Stack Developer</h3>
-            <p className="experience-company">Francium Tech</p>
-          </div>
-          <div className="experience-duration">
-            {experienceDuration}
-          </div>
-        </div>
-
-        <p className="experience-description">
-          Building and maintaining applications using Python, Ruby on Rails, Vue 3, React, .NET, and .NET MAUI while supporting performance, usability, and long-term maintainability.
-        </p>
-
-        <div className="experience-features">
-          {strengths.map((strength) => (
-            <div key={strength} className="experience-feature">
-              <CheckCircle2 size={20} />
-              <span>{strength}</span>
+      <div className="timeline-container reveal">
+        {experiences.map((exp, index) => (
+          <div key={index} className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-content premium-glass-card">
+              <div className="timeline-header">
+                <h3 className="timeline-title">{exp.title}</h3>
+                <div className="timeline-date">
+                  <Calendar size={14} />
+                  {exp.date}
+                </div>
+              </div>
+              <h4 className="timeline-company">{exp.company}</h4>
+              <p className="timeline-desc">{exp.description}</p>
+              <div className="timeline-tech">
+                {exp.tech.map((t) => (
+                  <span key={t} className="tech-pill">{t}</span>
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

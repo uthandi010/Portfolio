@@ -1,91 +1,69 @@
 import React from "react";
-import { ArrowRight, Sparkles, Code, Terminal, Cpu, Download } from "lucide-react";
+import { ArrowRight, Sparkles, Terminal, Code, Cpu, Download } from "lucide-react";
 import profileImage from "../assets/my_image.jpg";
 import "../fresh-styles.css";
 
-const focusAreas = [
-  { icon: <Code size={16} />, label: "Modern Web Apps" },
-  { icon: <Terminal size={16} />, label: "Scalable Backends" },
-  { icon: <Cpu size={16} />, label: "System Architecture" },
-];
-
 const FreshHero = () => {
   return (
-    <section id="home" className="hero">
-      <div className="hero-container">
-        <div className="hero-content">
-          <div className="hero-badge">
-            <Sparkles size={16} className="hero-badge-icon" />
-            <span>Full-Stack Developer from India</span>
-          </div>
-
-          <h1 className="hero-title">
-            Building <span className="text-gradient">sharp</span> digital products with cleaner UI.
-          </h1>
-
-          <p className="hero-description">
-            I'm <span className="text-highlight">Uthandi P</span>. I specialize in building exceptional 
-            digital experiences with React, Vue, Python, and .NET. I enjoy taking complex problems 
-            and turning them into simple, beautiful, and intuitive designs.
-          </p>
-
-          <div className="hero-focus">
-            {focusAreas.map((area, index) => (
-              <div key={index} className="focus-pill">
-                {area.icon}
-                <span>{area.label}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="hero-buttons">
-            <a href="#projects" className="btn btn-primary">
-              View My Work
-              <ArrowRight size={18} />
-            </a>
-            <a href="#contact" className="btn btn-secondary">
-              Let's Connect
-            </a>
-            <a href="/resume.pdf" download="Uthandi_P_Resume.pdf" className="btn btn-secondary">
-              <Download size={18} />
-              Resume
-            </a>
-          </div>
-
-          <div className="hero-stats">
-            <div className="stat">
-              <div className="stat-value">1+</div>
-              <div className="stat-label">Years Exp.</div>
-            </div>
-            <div className="stat-divider"></div>
-            <div className="stat">
-              <div className="stat-value">6</div>
-              <div className="stat-label">SaaS Projects</div>
-            </div>
+    <section id="home" className="hero-nextgen">
+      <div className="hero-mesh-background"></div>
+      
+      <div className="hero-nextgen-content">
+        <div className="reveal">
+          <div className="premium-badge">
+            <span className="pulsing-dot"></span>
+            Available for new opportunities
           </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="hero-image-wrapper">
-            <div className="hero-image-bg"></div>
-            <div className="hero-image-outline"></div>
-            <img src={profileImage} alt="Uthandi P" className="hero-profile-image" />
-            
-            <div className="floating-hero-card card-1">
-              <div className="card-icon">🚀</div>
-              <div className="card-info">
-                <strong>Fast Delivery</strong>
-                <span>Performance first</span>
-              </div>
-            </div>
-            
-            <div className="floating-hero-card card-2">
-              <div className="card-icon">🎨</div>
-              <div className="card-info">
-                <strong>Modern UI</strong>
-                <span>Clean & Minimal</span>
-              </div>
-            </div>
+        <h1 className="hero-headline reveal" style={{ transitionDelay: "100ms" }}>
+          I craft <span className="gradient-text">digital</span> experiences that are fast, scalable, and visually stunning.
+        </h1>
+
+        <p className="hero-subheadline reveal" style={{ transitionDelay: "200ms" }}>
+          Hi, I'm <strong>Uthandi P</strong>. A Full-Stack Developer specializing in React, Vue, Python, and .NET. I build seamless applications from the database all the way to the pixels on the screen.
+        </p>
+
+        <div className="hero-actions reveal" style={{ transitionDelay: "300ms" }}>
+          <a href="#projects" className="premium-btn primary">
+            Explore My Work <ArrowRight size={18} />
+          </a>
+          <a href="/resume.pdf" download="Uthandi_P_Resume.pdf" className="premium-btn secondary">
+            <Download size={18} /> Download Resume
+          </a>
+        </div>
+
+        <div className="hero-metrics reveal" style={{ transitionDelay: "400ms" }}>
+          <div className="metric">
+            <h3>3+</h3>
+            <p>Years Experience</p>
+          </div>
+          <div className="metric-divider"></div>
+          <div className="metric">
+            <h3>6</h3>
+            <p>SaaS Applications</p>
+          </div>
+          <div className="metric-divider"></div>
+          <div className="metric">
+            <h3>100%</h3>
+            <p>Commitment</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="hero-nextgen-visual reveal" style={{ transitionDelay: "500ms" }}>
+        <div className="avatar-cluster">
+          <div className="avatar-glow"></div>
+          <img src={profileImage} alt="Uthandi P" className="main-avatar" />
+          
+          <div className="floating-tech-badge react-badge">
+            <Code size={20} />
+          </div>
+          <div className="floating-tech-badge python-badge">
+            <Terminal size={20} />
+          </div>
+          <div className="floating-tech-badge net-badge">
+            <Cpu size={20} />
           </div>
         </div>
       </div>
