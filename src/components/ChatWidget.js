@@ -63,7 +63,7 @@ const getAgentReply = (question) => {
   }
 
   if (normalized.includes("resume") || normalized.includes("cv")) {
-    return "There's no downloadable resume posted here yet — email uthandi40@gmail.com and he'll send one over.";
+    return "You can download his resume using the \"Resume\" button at the top of the page, or email uthandi40@gmail.com.";
   }
 
   return "I can help with skills, projects, experience, resume, or contact details. Try asking what he builds or how to contact him.";

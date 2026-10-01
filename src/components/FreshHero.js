@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Sparkles, Code, Terminal, Cpu } from "lucide-react";
+import { ArrowRight, Sparkles, Code, Terminal, Cpu, Download } from "lucide-react";
 import profileImage from "../assets/my_image.jpg";
 import "../fresh-styles.css";
 
@@ -45,6 +45,10 @@ const FreshHero = () => {
             </a>
             <a href="#contact" className="btn btn-secondary">
               Let's Connect
+            </a>
+            <a href="/resume.pdf" download="Uthandi_P_Resume.pdf" className="btn btn-secondary">
+              <Download size={18} />
+              Resume
             </a>
           </div>
 
