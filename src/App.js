@@ -11,7 +11,6 @@ import ChatWidget from "./components/ChatWidget";
 import "./fresh-styles.css";
 
 const App = () => {
-  // Fade/slide sections into view as the visitor scrolls to them.
   useEffect(() => {
     const revealEls = document.querySelectorAll(".reveal");
     if (!revealEls.length) return undefined;
@@ -30,7 +29,7 @@ const App = () => {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
     revealEls.forEach((el) => observer.observe(el));
@@ -40,11 +39,15 @@ const App = () => {
   return (
     <ThemeProvider>
       <div className="app-container">
+        {/* Background Ambient Glowing Orbs */}
+        <div className="ambient-orb ambient-orb-1"></div>
+        <div className="ambient-orb ambient-orb-2"></div>
+        <div className="ambient-orb ambient-orb-3"></div>
+
         <ClassicNavbar />
 
         <main>
           <FreshHero />
-          <div className="section-divider"></div>
           <FreshSkills />
           <FreshProjects />
           <FreshExperience />

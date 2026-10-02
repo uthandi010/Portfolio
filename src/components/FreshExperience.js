@@ -1,5 +1,5 @@
 import React from "react";
-import { BriefcaseBusiness, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Calendar } from "lucide-react";
 import "../fresh-styles.css";
 
 const getExperienceDuration = (startYear, startMonth) => {
@@ -21,7 +21,6 @@ const getExperienceDuration = (startYear, startMonth) => {
   const years = Math.floor(totalMonths / 12);
   const months = totalMonths % 12;
 
-  // Return only years and months as requested
   if (years > 0 && months > 0) {
     return `${years}y ${months}m`;
   }
@@ -33,51 +32,53 @@ const getExperienceDuration = (startYear, startMonth) => {
   return `${months}m`;
 };
 
-const strengths = [
-  "Builds robust applications across frontend and backend systems",
-  "Balances product usability, performance, and clean engineering",
-  "Works effectively with cross-functional teams and delivery timelines",
-  "Continuously improves code quality, maintainability, and workflow"
+const keyStrengths = [
+  "Engineers robust, full-stack web and mobile applications from concept to production",
+  "Balances intuitive visual UI/UX design with reliable backend API architectures",
+  "Collaborates effectively across cross-functional product and engineering teams",
+  "Maintains rigorous automated testing, clean code principles, and CI/CD pipelines",
 ];
 
 const FreshExperience = () => {
-  const experienceDuration = getExperienceDuration(2025, 2);
+  const duration = getExperienceDuration(2025, 2);
 
   return (
     <section id="experience" className="section">
       <div className="section-header reveal">
-        <div className="section-badge">
-          <BriefcaseBusiness size={16} />
-          Experience
-        </div>
-        <h2 className="section-title">Where I work</h2>
-        <p className="section-description">
-          Turning requirements into production-ready experiences users love
+        <span className="section-tag">03 // Experience</span>
+        <h2 className="section-title">Professional Journey</h2>
+        <p className="section-subtitle">
+          Hands-on software development experience building scalable client solutions and SaaS platforms.
         </p>
       </div>
 
-      <div className="experience-card reveal">
-        <div className="experience-header">
-          <div>
-            <h3 className="experience-title">Full-Stack Developer</h3>
-            <p className="experience-company">Francium Tech</p>
-          </div>
-          <div className="experience-duration">
-            {experienceDuration}
-          </div>
-        </div>
-
-        <p className="experience-description">
-          Building and maintaining applications using Python, Ruby on Rails, Vue 3, React, .NET, and .NET MAUI while supporting performance, usability, and long-term maintainability.
-        </p>
-
-        <div className="experience-features">
-          {strengths.map((strength) => (
-            <div key={strength} className="experience-feature">
-              <CheckCircle2 size={20} />
-              <span>{strength}</span>
+      <div className="experience-container reveal">
+        <div className="experience-card">
+          <div className="experience-header">
+            <div>
+              <h3 className="experience-role-title">Full-Stack Developer</h3>
+              <span className="experience-company-name">Francium Tech</span>
             </div>
-          ))}
+
+            <div className="experience-badge">
+              <Calendar size={15} />
+              <span>Feb 2025 — Present</span>
+              <span className="experience-duration-tag">({duration})</span>
+            </div>
+          </div>
+
+          <p className="experience-description">
+            Building, optimizing, and maintaining multi-tiered applications using <strong>Python, Ruby on Rails, Vue 3, React, .NET Core, and .NET MAUI</strong> while supporting code quality, response speed, and long-term scalability.
+          </p>
+
+          <div className="experience-strengths-grid">
+            {keyStrengths.map((item) => (
+              <div key={item} className="strength-item">
+                <CheckCircle2 size={18} className="strength-icon" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
