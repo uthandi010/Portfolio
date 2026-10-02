@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Instagram, Mail, Sun, Moon } from "lucide-react";
+import { Menu, X, Github, Linkedin, Instagram, Mail, Sun, Moon, FileText, ChevronRight } from "lucide-react";
 import { useTheme } from "../theme-context";
 import "../fresh-styles.css";
 
@@ -15,7 +15,7 @@ const ClassicNavbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +25,6 @@ const ClassicNavbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Highlight whichever section is currently in view.
   useEffect(() => {
     const sections = navItems
       .map((item) => document.querySelector(item.href))
@@ -42,7 +41,7 @@ const ClassicNavbar = () => {
           }
         });
       },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-35% 0px -45% 0px", threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -53,105 +52,105 @@ const ClassicNavbar = () => {
 
   return (
     <>
-      <nav className={`classic-navbar ${scrolled ? "scrolled" : ""}`}>
-        <div className="classic-navbar-inner">
-          <a href="#home" className="classic-nav-logo" onClick={closeMobileMenu}>
-            <div className="classic-nav-logo-icon">UP</div>
-            <span>Uthandi P</span>
-          </a>
+      <header className="navbar-wrapper">
+        <nav className={`navbar ${scrolled ? "is-scrolled" : ""}`}>
+          <div className="navbar-inner">
+            <a href="#home" className="navbar-logo" onClick={closeMobileMenu}>
+              <span className="navbar-logo-mark">UP</span>
+              <span className="navbar-logo-text">Uthandi P.</span>
+            </a>
 
-          <div className="classic-nav-links">
+            <div className="navbar-links">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`navbar-link ${activeSection === item.href ? "is-active" : ""}`}
+                  onClick={closeMobileMenu}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="navbar-actions">
+              <button
+                type="button"
+                className="theme-switch-btn"
+                onClick={toggleTheme}
+                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+
+              <a
+                href="/resume.pdf"
+                download="Uthandi_P_Resume.pdf"
+                className="navbar-resume"
+              >
+                <FileText size={15} />
+                <span>Résumé</span>
+              </a>
+
+              <button
+                type="button"
+                className="navbar-menu-btn"
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu size={22} />
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div className={`mobile-overlay ${isMobileMenuOpen ? "is-active" : ""}`} onClick={closeMobileMenu}>
+        <div className="mobile-panel" onClick={(e) => e.stopPropagation()}>
+          <div className="mobile-panel-header">
+            <div className="navbar-logo">
+              <span className="navbar-logo-mark">UP</span>
+              <span className="navbar-logo-text">Uthandi P.</span>
+            </div>
+            <button
+              type="button"
+              className="mobile-close"
+              onClick={closeMobileMenu}
+              aria-label="Close menu"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          <div className="mobile-links">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className={`classic-nav-link ${activeSection === item.href ? "active" : ""}`}
+                className={`mobile-link ${activeSection === item.href ? "is-active" : ""}`}
                 onClick={closeMobileMenu}
               >
-                {item.label}
+                <span>{item.label}</span>
+                <ChevronRight size={18} />
               </a>
             ))}
           </div>
 
-          <div className="classic-nav-actions">
-            <div className="classic-nav-socials">
-              <a href="https://github.com/uthandi010" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="GitHub">
+          <div className="mobile-footer">
+            <p>Connect with Uthandi</p>
+            <div className="mobile-socials">
+              <a href="mailto:uthandi40@gmail.com" className="mobile-social-btn" aria-label="Email">
+                <Mail size={18} />
+              </a>
+              <a href="https://github.com/uthandi010" target="_blank" rel="noopener noreferrer" className="mobile-social-btn" aria-label="GitHub">
                 <Github size={18} />
               </a>
-              <a href="https://www.linkedin.com/in/uthandi-p-a70377340/" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/uthandi-p-a70377340/" target="_blank" rel="noopener noreferrer" className="mobile-social-btn" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="https://instagram.com/uthandi_jr" target="_blank" rel="noopener noreferrer" className="classic-social-link" aria-label="Instagram">
+              <a href="https://instagram.com/uthandi_jr" target="_blank" rel="noopener noreferrer" className="mobile-social-btn" aria-label="Instagram">
                 <Instagram size={18} />
-              </a>
-            </div>
-            <button
-              type="button"
-              className="classic-theme-toggle"
-              onClick={toggleTheme}
-              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              <Sun size={18} className="theme-icon sun-icon" />
-              <Moon size={18} className="theme-icon moon-icon" />
-            </button>
-            <button
-              type="button"
-              className="classic-menu-btn"
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu size={22} />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      <div className={`classic-mobile-overlay ${isMobileMenuOpen ? "active" : ""}`} onClick={closeMobileMenu}>
-        <div className={`classic-mobile-content ${isMobileMenuOpen ? "active" : ""}`} onClick={(e) => e.stopPropagation()}>
-          <div className="classic-mobile-header">
-            <div className="classic-nav-logo">
-              <div className="classic-nav-logo-icon">UP</div>
-              <span>Uthandi P</span>
-            </div>
-            <button
-              type="button"
-              className="classic-mobile-close"
-              onClick={closeMobileMenu}
-              aria-label="Close menu"
-            >
-              <X size={24} />
-            </button>
-          </div>
-
-          <div className="classic-mobile-links">
-            {navItems.map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="classic-mobile-link"
-                onClick={closeMobileMenu}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="classic-mobile-footer">
-            <p>Get in touch</p>
-            <div className="classic-mobile-socials">
-              <a href="mailto:uthandi40@gmail.com" className="classic-mobile-social-btn">
-                <Mail size={20} />
-              </a>
-              <a href="https://github.com/uthandi010" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">
-                <Github size={20} />
-              </a>
-              <a href="https://www.linkedin.com/in/uthandi-p-a70377340/" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://instagram.com/uthandi_jr" target="_blank" rel="noopener noreferrer" className="classic-mobile-social-btn">
-                <Instagram size={20} />
               </a>
             </div>
           </div>

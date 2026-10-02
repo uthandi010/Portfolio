@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Bot, MessageSquareText, SendHorizonal, X } from "lucide-react";
+import { MessageSquare, X, Send, Sparkles } from "lucide-react";
 import "../fresh-styles.css";
 
 const promptSuggestions = [
@@ -12,7 +12,7 @@ const promptSuggestions = [
 const initialMessages = [
   {
     role: "assistant",
-    text: "Hello, I'm Uthandi's portfolio agent. Ask me about skills, projects, experience, resume, or contact details.",
+    text: "Hello! I'm Uthandi's AI portfolio assistant. Ask me about his tech stack, 6 shipped SaaS projects, experience, or contact details.",
   },
 ];
 
@@ -24,7 +24,7 @@ const getAgentReply = (question) => {
     normalized.includes("work") ||
     normalized.includes("do")
   ) {
-    return "Uthandi builds full-stack applications with polished frontends, reliable backend systems, and mobile-friendly product experiences.";
+    return "Uthandi builds high-performance full-stack applications with responsive frontends, secure backend APIs, and native desktop/mobile solutions.";
   }
 
   if (
@@ -33,7 +33,7 @@ const getAgentReply = (question) => {
     normalized.includes("skills") ||
     normalized.includes("use")
   ) {
-    return "His main stack includes React, Vue 3, Python (FastAPI), Ruby on Rails, Node.js, C# (.NET/.NET MAUI), SQL, MongoDB, Git, and GitHub Actions for CI.";
+    return "His core tech stack includes React, Vue 3, TypeScript, Python (FastAPI), Ruby on Rails, Node.js (Express), C# (.NET Core & .NET MAUI), MongoDB, SQL, and GitHub Actions CI/CD.";
   }
 
   if (
@@ -41,7 +41,7 @@ const getAgentReply = (question) => {
     normalized.includes("job") ||
     normalized.includes("company")
   ) {
-    return "He is working as a Full-Stack Developer at Francium Tech since February 2025, building applications across Python, Rails, React, Vue 3, .NET, and .NET MAUI.";
+    return "He works as a Full-Stack Developer at Francium Tech (since Feb 2025), architecting web and mobile solutions across Python, Rails, React, Vue 3, .NET, and .NET MAUI.";
   }
 
   if (
@@ -49,24 +49,23 @@ const getAgentReply = (question) => {
     normalized.includes("portfolio") ||
     normalized.includes("apps")
   ) {
-    return "Featured work includes six full-stack SaaS-style apps: BoardRoom (project management), BookedIn (appointment booking), LinkFolio (link-in-bio with analytics), HelpDeskly (a support helpdesk), ShelfSpace (inventory with a native desktop client), and PayDesk (subscription billing).";
+    return "He has built 6 production SaaS products: BoardRoom (project management), BookedIn (appointment booking engine), LinkFolio (analytics builder), HelpDeskly (support portal), ShelfSpace (.NET MAUI desktop inventory), and PayDesk (subscription billing).";
   }
 
   if (
     normalized.includes("contact") ||
     normalized.includes("hire") ||
     normalized.includes("email") ||
-    normalized.includes("linkedin") ||
-    normalized.includes("whatsapp")
+    normalized.includes("linkedin")
   ) {
-    return "You can reach him by email at uthandi40@gmail.com, or through LinkedIn, GitHub, and Instagram in the contact section.";
+    return "You can reach out via email at uthandi40@gmail.com or connect on LinkedIn and GitHub.";
   }
 
   if (normalized.includes("resume") || normalized.includes("cv")) {
-    return "You can download his resume using the \"Resume\" button at the top of the page, or email uthandi40@gmail.com.";
+    return "You can download his resume using the 'Résumé' button in the top navigation bar or request it directly via email at uthandi40@gmail.com.";
   }
 
-  return "I can help with skills, projects, experience, resume, or contact details. Try asking what he builds or how to contact him.";
+  return "I can assist with questions about Uthandi's skills, projects, background, resume, or contact info. Try clicking one of the suggestions below!";
 };
 
 const ChatWidget = () => {
@@ -112,15 +111,15 @@ const ChatWidget = () => {
   return (
     <div className="chat-widget">
       {isOpen && (
-        <div className="chat-panel reveal">
+        <div className="chat-panel">
           <div className="chat-panel-top">
             <div className="chat-agent-meta">
-              <span className="chat-agent-icon">
-                <Bot size={18} />
-              </span>
+              <div className="chat-agent-avatar">
+                <Sparkles size={16} />
+              </div>
               <div>
-                <strong>Uthandi Agent</strong>
-                <small>Portfolio assistant online</small>
+                <strong>Uthandi AI Agent</strong>
+                <small>● Online & ready</small>
               </div>
             </div>
 
@@ -141,7 +140,7 @@ const ChatWidget = () => {
                 className={`agent-message ${message.role}`}
               >
                 <span className="agent-role">
-                  {message.role === "assistant" ? "Agent" : "You"}
+                  {message.role === "assistant" ? "Assistant" : "You"}
                 </span>
                 <p>{message.text}</p>
               </div>
@@ -167,11 +166,11 @@ const ChatWidget = () => {
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               className="agent-input"
-              placeholder="Ask about skills, projects, contact..."
+              placeholder="Ask a question..."
               aria-label="Ask the portfolio agent"
             />
             <button type="submit" className="chat-send-button" aria-label="Send">
-              <SendHorizonal size={18} />
+              <Send size={15} />
             </button>
           </form>
         </div>
@@ -181,9 +180,10 @@ const ChatWidget = () => {
         type="button"
         className="chat-fab"
         onClick={() => setIsOpen((open) => !open)}
-        aria-label={isOpen ? "Close portfolio agent" : "Open portfolio agent"}
+        aria-label={isOpen ? "Close assistant" : "Open portfolio assistant"}
+        title="Ask Uthandi's Assistant"
       >
-        <MessageSquareText size={22} />
+        {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
       </button>
     </div>
   );
