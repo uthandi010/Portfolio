@@ -12,7 +12,7 @@ const projects = [
   {
     id: 1,
     title: "BoardRoom",
-    badge: "Full-Stack SaaS",
+    badge: "Project Management",
     description:
       "A multi-tenant project management platform with workspaces, Kanban boards, and role-based permissions enforced server-side on every request.",
     techStack: ["C#", "ASP.NET Core", "EF Core", "React", "TypeScript"],
@@ -24,7 +24,7 @@ const projects = [
     title: "BookedIn",
     badge: "Booking Engine",
     description:
-      "An appointment-booking SaaS featuring a real-time availability engine computing free slots from business hours and bookings, plus public client booking.",
+      "An appointment-booking app featuring a real-time availability engine computing free slots from business hours and bookings, plus public client booking.",
     techStack: ["Ruby on Rails", "Vue 3", "SQLite"],
     sourceCode: "https://github.com/uthandi010/BookedIn",
     image: bookedinShot,
@@ -76,9 +76,9 @@ const FreshProjects = () => {
     <section id="projects" className="section">
       <div className="section-header reveal">
         <span className="section-tag">02 // Featured Projects</span>
-        <h2 className="section-title">Production SaaS Applications</h2>
+        <h2 className="section-title">Full-Stack Projects</h2>
         <p className="section-subtitle">
-          Six full-stack products engineered to solve real-world architectural, operational, and user experience problems.
+          Six full-stack projects exploring real-world architectural, operational, and user experience problems.
         </p>
       </div>
 
@@ -91,16 +91,19 @@ const FreshProjects = () => {
           >
             <div className="project-visual-wrapper">
               <div className="project-window-header">
-                <span className="window-dot window-dot-red"></span>
-                <span className="window-dot window-dot-yellow"></span>
-                <span className="window-dot window-dot-green"></span>
+                <span className="window-dot window-dot-red" aria-hidden="true"></span>
+                <span className="window-dot window-dot-yellow" aria-hidden="true"></span>
+                <span className="window-dot window-dot-green" aria-hidden="true"></span>
               </div>
 
               {project.image && (
                 <img
                   src={project.image}
-                  alt={`${project.title} screenshot`}
+                  alt={`${project.title} app screenshot`}
                   className="project-image"
+                  width="1440"
+                  height="900"
+                  loading="lazy"
                 />
               )}
 

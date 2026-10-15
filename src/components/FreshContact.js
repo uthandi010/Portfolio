@@ -18,7 +18,7 @@ const FreshContact = () => {
         <span className="section-tag">04 // Contact & Connect</span>
         <h2 className="contact-title">Let's build something extraordinary together.</h2>
         <p className="contact-subtitle">
-          Whether you have a groundbreaking SaaS idea, an open engineering position, or just want to connect — my inbox is always open.
+          Whether you have a interesting project idea, an open engineering position, or just want to connect — my inbox is always open.
         </p>
 
         <div className="contact-email-wrapper">
