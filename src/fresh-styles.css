@@ -185,6 +185,25 @@ a {
   box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid currentColor;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 /* Scroll Reveal */
 .reveal {
   opacity: 0;
@@ -202,7 +221,13 @@ a {
   .reveal {
     opacity: 1;
     transform: none;
-    transition: none;
+    transition: none !important;
+  }
+
+  .ambient-orb,
+  .pulse-dot,
+  .chat-panel {
+    animation: none !important;
   }
 }
 
