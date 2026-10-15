@@ -1,46 +1,17 @@
 import React from "react";
 import { CheckCircle2, Calendar } from "lucide-react";
+import { getExperienceDuration, EXPERIENCE_START_LABEL } from "../experience";
 import "../fresh-styles.css";
 
-const getExperienceDuration = (startYear, startMonth) => {
-  const today = new Date();
-  const startDate = new Date(startYear, startMonth - 1, 1);
-
-  let totalMonths =
-    (today.getFullYear() - startDate.getFullYear()) * 12 +
-    (today.getMonth() - startDate.getMonth());
-
-  if (today.getDate() < startDate.getDate()) {
-    totalMonths -= 1;
-  }
-
-  if (totalMonths < 0) {
-    totalMonths = 0;
-  }
-
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-
-  if (years > 0 && months > 0) {
-    return `${years}y ${months}m`;
-  }
-
-  if (years > 0) {
-    return `${years}y`;
-  }
-
-  return `${months}m`;
-};
-
 const keyStrengths = [
-  "Engineers robust, full-stack web and mobile applications from concept to production",
+  "Engineers robust, full-stack web and mobile applications from concept to delivery",
   "Balances intuitive visual UI/UX design with reliable backend API architectures",
   "Collaborates effectively across cross-functional product and engineering teams",
   "Maintains rigorous automated testing, clean code principles, and CI/CD pipelines",
 ];
 
 const FreshExperience = () => {
-  const duration = getExperienceDuration(2025, 2);
+  const duration = getExperienceDuration();
 
   return (
     <section id="experience" className="section">
@@ -48,7 +19,7 @@ const FreshExperience = () => {
         <span className="section-tag">03 // Experience</span>
         <h2 className="section-title">Professional Journey</h2>
         <p className="section-subtitle">
-          Hands-on software development experience building scalable client solutions and SaaS platforms.
+          Hands-on software development experience building web applications and full-stack projects.
         </p>
       </div>
 
@@ -62,7 +33,7 @@ const FreshExperience = () => {
 
             <div className="experience-badge">
               <Calendar size={15} />
-              <span>Feb 2025 — Present</span>
+              <span>{EXPERIENCE_START_LABEL} — Present</span>
               <span className="experience-duration-tag">({duration})</span>
             </div>
           </div>

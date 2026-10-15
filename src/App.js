@@ -39,14 +39,18 @@ const App = () => {
   return (
     <ThemeProvider>
       <div className="app-container">
-        {/* Background Ambient Glowing Orbs */}
-        <div className="ambient-orb ambient-orb-1"></div>
-        <div className="ambient-orb ambient-orb-2"></div>
-        <div className="ambient-orb ambient-orb-3"></div>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+
+        {/* Background Ambient Glowing Orbs (decorative) */}
+        <div className="ambient-orb ambient-orb-1" aria-hidden="true"></div>
+        <div className="ambient-orb ambient-orb-2" aria-hidden="true"></div>
+        <div className="ambient-orb ambient-orb-3" aria-hidden="true"></div>
 
         <ClassicNavbar />
 
-        <main>
+        <main id="main-content" tabIndex={-1}>
           <FreshHero />
           <FreshSkills />
           <FreshProjects />

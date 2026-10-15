@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight, MapPin, Download } from "lucide-react";
 import profileImage from "../assets/my_image.jpg";
+import { getExperienceDuration } from "../experience";
 import "../fresh-styles.css";
 
 const FreshHero = () => {
@@ -9,7 +10,7 @@ const FreshHero = () => {
       <div className="hero-inner">
         <div className="hero-content">
           <div className="hero-availability-pill">
-            <span className="pulse-dot"></span>
+            <span className="pulse-dot" aria-hidden="true"></span>
             <span>Available for Full-Stack Opportunities</span>
           </div>
 
@@ -42,12 +43,12 @@ const FreshHero = () => {
 
           <div className="hero-stats">
             <div className="hero-stat-card">
-              <span className="hero-stat-value">1+</span>
-              <span className="hero-stat-label">Years Professional Exp</span>
+              <span className="hero-stat-value">{getExperienceDuration()}</span>
+              <span className="hero-stat-label">Professional Experience</span>
             </div>
             <div className="hero-stat-card">
               <span className="hero-stat-value">6</span>
-              <span className="hero-stat-label">Production SaaS Products</span>
+              <span className="hero-stat-label">Full-Stack Projects</span>
             </div>
           </div>
         </div>
@@ -59,7 +60,13 @@ const FreshHero = () => {
             </div>
 
             <div className="hero-portrait-wrapper">
-              <img src={profileImage} alt="Uthandi P" className="hero-portrait" />
+              <img
+                src={profileImage}
+                alt="Portrait of Uthandi P"
+                className="hero-portrait"
+                width="900"
+                height="827"
+              />
             </div>
 
             <div className="hero-floating-badge">
