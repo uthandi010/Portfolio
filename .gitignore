@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# large media / build output (keep out of git history)
+*.mov
+*.mp4
+src/assets/video/
+/dist
+/out
